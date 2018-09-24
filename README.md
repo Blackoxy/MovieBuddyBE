@@ -1,12 +1,15 @@
 # MovieBuddyBE
 
 Group Project Proposal
+
 Name: Movie Buddies
+
 Trello User Story Tracker: https://trello.com/b/mM2vE7BA/movie-buddy
 GitHub project: Backend Link: https://github.com/Blackoxy/MovieBuddyBE
 Front End Link: https://github.com/Blackoxy/MovieBuddyFE
 
 Group  Members
+
 Ahn Nguyen, Brice Sinkule, Hunt Applegate, Jose Stricklin, Jed Prentup
 
 Project Description
