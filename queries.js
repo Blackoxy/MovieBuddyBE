@@ -3,7 +3,9 @@ const knex = require("knex")(connection);
 
 module.exports = {
     getAll() {
-        return knex.select().from("movie_buds");
+        return knex.select().from("movie_buds")
+            .fullOuterJoin('buddies_titles', 'movie_buds.id', 'buddies_titles.buds_info')
+            .fullOuterJoin('movie_titles', 'movie_titles.id', 'buddies_titles.titles_info')
     },
     getBuddyById(id) {
         return knex
@@ -20,5 +22,10 @@ module.exports = {
     },
     deleteBuddy(id) {
         return knex.select().from("movie_buds").where("id", id).del().returning("*")
+    },
+    getMoviesById() {
+        // return knex.from("movie_buds").innerJoin("movie_titles", "movie_buds", "movie_titles.id")
+        // knex.from('users').innerJoin('accounts', 'users.id', 'accounts.user_id')
+        return knex.select('*').from('movie_buds').leftOuterJoin('movie_titles', 'movie_buds.id', 'movie_titles.id')
     }
 };
