@@ -10,7 +10,6 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.listen(port, (request, response) => {
-<<<<<<< HEAD
   console.log(`listening on ${port}`);
 });
 
@@ -28,31 +27,16 @@ app.use(function(error, req, res, next) {
   res.json({ message: error.message });
 });
 
-
-
-=======
-    console.log("Port Works!");
-});
-
-app.get("/", (request, response) => {
-    //response.send("hellllo");
-    queries.getAll().then(result => response.json({ result }));
-});
-
-// app.get("/:id", (request, response) => {
-//     queries.getBuddyById(request.params.id).then(result => response.json({ result }))
-// })
-
 app.post("/", (request, response) => {
-    queries.createBuddy(request.body).then(result => response.json({ result }))
+  queries.createBuddy(request.body).then(result => response.json({ result }))
 })
 app.put("/:id", (request, response) => {
-    queries.updateBuddy(request.params.id, request.body).then(result => response.json({ result }))
+  queries.updateBuddy(request.params.id, request.body).then(result => response.json({ result }))
 })
 app.delete("/:id", (request, response) => {
-    queries.deleteBuddy(request.params.id).then(result => response.json({ result }))
+  queries.deleteBuddy(request.params.id).then(result => response.json({ result }))
 })
 // app.get("/:id", (request, response) => {
 //     queries.getMoviesById(request.params.id).then(result => response.json({ result }))
 // })
->>>>>>> b13af01b7edaf8b179bb8bb03b2770092b58f10f
+
