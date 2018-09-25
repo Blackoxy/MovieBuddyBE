@@ -10,7 +10,7 @@ Front End Link: https://github.com/Blackoxy/MovieBuddyFE
 
 Group  Members
 
-Ahn Nguyen, Brice Sinkule, Hunt Applegate, Jose Stricklin, Jed Prentup
+Anh Nguyen, Brice Sinkule, Hunt Applegate, Jose Stricklin, Jed Prentup
 
 Project Description
 
