@@ -1,8 +1,8 @@
-const dbConnection = require("./knexfile")[process.env.NODE_ENV || "staging"];
-const knex = require("knex")(dbConnection);
+const connection = require("./knexfile")[process.env.NODE_ENV || "development"];
+const knex = require("knex")(connection);
 
 module.exports = {
-  selectAll() {
+  getAll() {
     return knex.select().from("movie_buds");
   },
   getBuddyById(id) {
