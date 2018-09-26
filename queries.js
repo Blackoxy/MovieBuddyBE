@@ -8,24 +8,29 @@ module.exports = {
             .fullOuterJoin('movie_titles', 'movie_titles.id', 'buddies_titles.titles_info')
     },
     getBuddyById(id) {
-        return knex
-            .select()
-            .from("movie_buds")
+        return knex('movie_buds')
+            .where("id", id);
+    },
+    getMovieById(id) {
+        return knex('movie_titles')
             .where("id", id);
     },
     createBuddy(buddy) {
-        return knex("movie_buds").insert(buddy, ["id", "firstName", "lastName", "userId"])
-
+        return knex("movie_buds").insert(buddy).returning('*')
+    },
+    createMovie(buddy) {
+        return knex("movie_titles").insert(buddy).returning('*')
     },
     updateBuddy(id, body) {
         return knex.select().from("movie_buds").where("id", id).update(body).returning("*")
     },
+    updateMovie(id, body) {
+        return knex.select().from("movie_titles").where("id", id).update(body).returning("*")
+    },
     deleteBuddy(id) {
         return knex.select().from("movie_buds").where("id", id).del().returning("*")
     },
-    getMoviesById() {
-        // return knex.from("movie_buds").innerJoin("movie_titles", "movie_buds", "movie_titles.id")
-        // knex.from('users').innerJoin('accounts', 'users.id', 'accounts.user_id')
-        return knex.select('*').from('movie_buds').leftOuterJoin('movie_titles', 'movie_buds.id', 'movie_titles.id')
+    deleteMovie(id) {
+        return knex.select().from("movie_titles").where("id", id).del().returning("*")
     }
 };

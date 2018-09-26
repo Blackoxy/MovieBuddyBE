@@ -5,16 +5,16 @@ exports.seed = function (knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('movie_titles').insert([
-        { title: 'Jaws' },
-        { title: 'Zoolander' },
-        { title: 'Dumb and Dumber' },
-        { title: 'The Royal Tenebaums' },
-        { title: 'Jurassic Park' },
-        { title: 'Taxi Driver' },
-        { title: 'Talladega Nights' },
-        { title: 'Black Sheep' },
-        { title: 'Tommy Boy' },
-        { title: 'Swingers' }
+        { title: 'Jaws', user_id: '100'},
+        { title: 'Zoolander', user_id: '100' },
+        { title: 'Dumb and Dumber', user_id: '200' },
+        { title: 'The Royal Tenebaums', user_id: '300' },
+        { title: 'Jurassic Park', user_id: '200' },
+        { title: 'Taxi Driver', user_id: '400' },
+        { title: 'Talladega Nights', user_id: '500' },
+        { title: 'Black Sheep', user_id: '500' },
+        { title: 'Tommy Boy', user_id: '600' },
+        { title: 'Swingers', user_id: '600' }
       ]);
     });
 };
