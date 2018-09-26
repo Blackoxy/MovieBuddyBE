@@ -27,8 +27,8 @@ module.exports = {
     updateMovie(id, body) {
         return knex.select().from("movie_titles").where("id", id).update(body).returning("*")
     },
-    deleteBuddy(id) {
-        return knex.select().from("movie_buds").where("id", id).del().returning("*")
+    deleteBuddy(lastName) {
+        return knex.select().from("movie_buds").where("lastName", lastName).del().returning("*")
     },
     deleteMovie(id) {
         return knex.select().from("movie_titles").where("id", id).del().returning("*")

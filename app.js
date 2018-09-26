@@ -36,8 +36,8 @@ app.put("/movie/:id", (request, response) => {
     queries.updateMovie(request.params.id, request.body).then(result => response.json({ result }))
 })
 
-app.delete("/user/:id", (request, response) => {
-    queries.deleteBuddy(request.params.id).then(result => response.json({ result }))
+app.delete("/user/:lastName", (request, response) => {
+    queries.deleteBuddy(request.params.lastName).then(result => response.json({ result }))
 })
 
 app.delete("/movie/:id", (request, response) => {
