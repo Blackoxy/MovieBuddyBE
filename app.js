@@ -4,39 +4,55 @@ const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 3000;
 const queries = require("./queries");
-const morgan = require('morgan')
+const morgan = require("morgan");
+const wish = require("./api/wish");
+const myWishlist = require("./api/my-wishlist");
+const title = require("./api/title");
 
 app.use(bodyParser.json());
 app.use(cors());
+
+app.use("/wish", wish);
+app.use("/my-wishlist", myWishlist);
+app.use("/title", title);
+
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  // Won't get here, because Express doesn't catch the above error
+  res.json({
+    message: err.message,
+    error: req.app.get("env") === "development" ? err : {}
+  });
+});
 
 app.listen(port, (request, response) => {
   console.log(`listening on ${port}`);
 });
 
-app.get("/", (request, response, next) => {
-  //response.send("hellllo");
+app.get("/", (request, response) => {
   queries.getAll().then(result => response.json({ result }));
 });
 
-app.get('/*', function(req, res, next) {
-  res.json({message:'Invalid URL'})
+app.get("/:id", (request, response) => {
+  queries.get(request.params.id).then(result => response.json({ result }));
 });
 
-app.use(function(error, req, res, next) {
-  // Won't get here, because Express doesn't catch the above error
-  res.json({ message: error.message });
-});
+// app.get("/*", function(req, res, next) {
+//   res.json({ message: "Invalid URL" });
+// });
 
 app.post("/", (request, response) => {
-  queries.createBuddy(request.body).then(result => response.json({ result }))
-})
+  queries.create(request.body).then(result => response.json({ result }));
+});
 app.put("/:id", (request, response) => {
-  queries.updateBuddy(request.params.id, request.body).then(result => response.json({ result }))
-})
+  queries
+    .update(request.params.id, request.body)
+    .then(result => response.json({ result }));
+});
 app.delete("/:id", (request, response) => {
-  queries.deleteBuddy(request.params.id).then(result => response.json({ result }))
-})
-// app.get("/:id", (request, response) => {
-//     queries.getMoviesById(request.params.id).then(result => response.json({ result }))
-// })
+  queries.delete(request.params.id).then(result => response.json({ result }));
+});
 
+// app.get("/wishes", (req, res) => {
+//   queries.getAllWishes().then(result => response.json({ result }));
+// });
