@@ -55,5 +55,11 @@ module.exports = {
       .select()
       .from("movie_titles")
       .where("title", title);
+  },
+  getQuote(id) {
+    return knex
+      .select()
+      .from("movie_quotes")
+      .where("quote_id", id);
   }
 };

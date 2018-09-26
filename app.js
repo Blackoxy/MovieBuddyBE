@@ -8,6 +8,7 @@ const morgan = require("morgan");
 const wish = require("./api/wish");
 const myWishlist = require("./api/my-wishlist");
 const title = require("./api/title");
+const quote = require("./api/quote");
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -15,6 +16,7 @@ app.use(cors());
 app.use("/wish", wish);
 app.use("/my-wishlist", myWishlist);
 app.use("/title", title);
+app.use("/quote", quote);
 
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
