@@ -24,6 +24,10 @@ app.get("/movie/:id", (request, response) => {
     .then(result => response.json({ result }));
 });
 
+app.get("/quote", (request, response) => {
+  queries.getAllQuotes(request.body).then(result => response.json({ result }));
+});
+
 app.get("/quote/:id", (request, response) => {
   queries.getQuote(request.params.id).then(result => response.json({ result }));
 });
